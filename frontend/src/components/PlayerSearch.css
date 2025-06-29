@@ -1,0 +1,85 @@
+.player-search-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.search-title {
+  color: #0c2340;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.search-form {
+  margin-bottom: 40px;
+}
+
+.search-box {
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  font-size: 16px;
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+.search-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 25px;
+  background-color: #0495f0;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.search-button:hover {
+  background-color: #0077c2;
+}
+
+.results-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  margin-top: 30px;
+}
+
+/* Adicione ao seu PlayerList.css */
+.player-card {
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.player-card:hover {
+  transform: translateY(-3px);
+}
+
+.player-card h3 {
+  color: #0c2340;
+  margin-bottom: 8px;
+}
+
+.player-card p {
+  color: #666;
+  margin: 5px 0;
+}
