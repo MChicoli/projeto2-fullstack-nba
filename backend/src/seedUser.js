@@ -3,11 +3,10 @@ import { User } from './models/User.js';
 
 (async () => {
   try {
-    await sequelize.sync();  // garante que a tabela exista
-
+    await sequelize.sync();
     await User.create({
       email: 'teste@exemplo.com',
-      password: '123456'     // será hashado pelo hook do modelo
+      password: '123456' 
     });
 
     console.log('Usuário criado ✔️');

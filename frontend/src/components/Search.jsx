@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { PlayerContext } from "../contexts/PlayerContext";
 import PlayerList from "./PlayerList";
-import buscaLogo from "../assets/busca-logo.svg";
 import "./PlayerSearch.css";
+import buscaLogo from "../assets/busca-logo.svg";
 
 function Search() {
-  const { setPlayers, players } = useContext(PlayerContext);
+  const { players, setPlayers } = useContext(PlayerContext);
+
   const {
     register,
     handleSubmit,
@@ -14,20 +16,16 @@ function Search() {
     reset
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async ({ name }) => {
     const token = localStorage.getItem("token");
     try {
-      const response = await fetch(
-        `http://localhost:5000/search?q=${data.name}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        }
-      );
-      if (response.ok) {
-        const result = await response.json();
-        setPlayers(result);
+      const res = await fetch(`http://localhost:5000/search?q=${name}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setPlayers(data);
       } else {
         console.error("Erro na busca");
       }
@@ -38,11 +36,14 @@ function Search() {
     }
   };
 
-  // CORREÇÃO: O return deve estar DENTRO da função Search()
   return (
     <div className="player-search-container">
       <h1 className="search-title">Buscar Jogadores da NBA</h1>
-
+      <div style={{ textAlign: "center", marginBottom: "20px" }}>
+        <Link to="/insert" className="add-btn">
+          + Adicionar Jogador
+        </Link>
+      </div>
       <form onSubmit={handleSubmit(onSubmit)} className="search-form">
         <div className="search-box">
           <input
@@ -54,6 +55,7 @@ function Search() {
             })}
             className={errors.name ? "input-error" : ""}
           />
+
           <button type="submit" className="search-button">
             <img src={buscaLogo} alt="Buscar" className="search-icon" />
             Buscar
@@ -64,7 +66,6 @@ function Search() {
           <p className="error-message">{errors.name.message}</p>
         )}
       </form>
-
       <div className="results-container">
         <PlayerList players={players} />
       </div>

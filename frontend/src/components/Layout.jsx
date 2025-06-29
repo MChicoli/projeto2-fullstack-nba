@@ -1,14 +1,23 @@
-// src/components/Layout.jsx
-import React from "react";
-import Header from "./Header";          // se quiser manter
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import Header from "./Header";
 
 function Layout() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.log("Nenhum token encontrado, redirecionando para a página de login...");
+      navigate("/");
+    }
+  }, [navigate]);
   return (
     <>
-      <Header />                        {/* opcional */}
-      {/*  AQUI é onde as rotas filhas aparecem  */}
-      <Outlet />
+      <Header />
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }

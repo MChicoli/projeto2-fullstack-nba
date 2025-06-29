@@ -1,33 +1,38 @@
-// src/routes/searchRoutes.js
 import { Router } from 'express';
 import { query, validationResult } from 'express-validator';
-import { Op } from 'sequelize';          // 👈 necessário p/ operador iLike
+import { Op } from 'sequelize';
 import { Player } from '../models/Player.js';
-import { verifyToken } from './middleware.js'; // middleware de auth
+import { verifyToken, logActivity } from './middleware.js';
+import cache from 'memory-cache';
 
 const router = Router();
 
-// GET /search?q=nome   (rota protegida)
 router.get(
   '/search',
   verifyToken,
+  logActivity,
   [query('q').trim().escape()],
   async (req, res) => {
-    // validação de querystring
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
     try {
       const { q } = req.query;
+      const cacheKey = `search-${q}`; 
+      const cachedResult = cache.get(cacheKey);
+      if (cachedResult) {
+        return res.json(cachedResult);
+      }
 
-      // busca case‑insensitive no Postgres
       const players = await Player.findAll({
         where: { name: { [Op.iLike]: `%${q}%` } }
       });
 
+      cache.put(cacheKey, players, 300000);
+
       res.json(players);
+      
     } catch (err) {
       console.error('Erro em /search:', err);
       res.status(500).json({ error: 'Erro interno do servidor' });

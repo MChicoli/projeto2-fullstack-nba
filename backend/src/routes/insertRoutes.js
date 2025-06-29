@@ -28,5 +28,22 @@ router.post('/insert',
     }
   }
 );
+router.post('/insert/bulk',
+  verifyToken,
+  async (req, res) => {
+    const playersData = req.body;
 
+    if (!Array.isArray(playersData) || playersData.length === 0) {
+      return res.status(400).json({ error: 'O corpo da requisição deve ser um array de jogadores.' });
+    }
+
+    try {
+      const players = await Player.bulkCreate(playersData);
+      res.status(201).json(players);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Erro ao inserir jogadores em massa' });
+    }
+  }
+);
 export default router;

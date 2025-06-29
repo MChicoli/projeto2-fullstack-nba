@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-//import "./Insert.css";   // se quiser estilizar depois
+import "./Insert.css";
 
 function Insert() {
   const {

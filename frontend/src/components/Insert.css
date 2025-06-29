@@ -1,0 +1,91 @@
+body {
+  background-color: #eef2f7;
+  font-family: Arial, sans-serif;
+}
+
+.insert-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.insert-container h2 {
+  color: #1e2a3a;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.insert-form {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.insert-form input,
+.insert-form button {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border: 1px solid #dcdfe6;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.insert-form button {
+  background-color: #0d6efd;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+}
+
+.insert-form button:hover {
+  background-color: #0b5ed7; 
+}
+
+.insert-form input:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row > div {
+  flex: 1; 
+}
+
+.insert-form span {
+  color: #dc3545; 
+  font-size: 14px;
+  display: block; 
+  margin-bottom: 10px; 
+  margin-top: -5px; 
+}
+
+
+.insert-msg {
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 500;
+  background: #d1e7dd; 
+  border: 1px solid #a3cfbb;
+  color: #0a3622; 
+}
+
+.insert-msg.error {
+  background: #f8d7da; 
+  border-color: #f5c2c7;
+  color: #58151c; 
+}
