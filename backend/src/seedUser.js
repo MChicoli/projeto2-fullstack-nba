@@ -1,36 +1,39 @@
+// src/seedUser.js - VERSÃO FINAL CORRETA
 import dotenv from 'dotenv';
-import crypto from 'crypto';
 import { sequelize } from './config/db.js';
 import { User } from './models/User.js';
 
 dotenv.config();
 
-const email = process.env.ADMIN_EMAIL || 'admin@example.com';
-let password = process.env.ADMIN_PASSWORD;
+const email = process.env.ADMIN_EMAIL;
+const password = process.env.ADMIN_PASSWORD;
 
-if (!password) {
-  password = crypto.randomBytes(4).toString('hex');
-  console.log(`Senha gerada aleatoriamente: ${password}`);
+if (!email || !password) {
+  console.error('ERRO: ADMIN_EMAIL e ADMIN_PASSWORD devem ser definidos no arquivo .env');
+  process.exit(1);
 }
 
 (async () => {
   try {
     await sequelize.sync();
+    
     const [user, created] = await User.findOrCreate({
       where: { email },
-      defaults: { password }
+      defaults: { password } // Passa a senha em texto puro aqui
     });
 
-if (created) {
-  console.log(`Usuário admin criado: ${email}`);
-} else {
-  await user.update({ password });
-  console.log(`Senha atualizada para o usuário: ${email}`);
-}
+    if (created) {
+      console.log(`Usuário admin criado com sucesso: ${email}`);
+    } else {
+      // Se o usuário já existe, atualizamos a senha dele
+      user.password = password; // Passa a senha em texto puro aqui também
+      await user.save();
+      console.log(`Senha do usuário admin (${email}) foi atualizada com sucesso.`);
+    }
+
   } catch (err) {
-    console.error('Erro no seed:', err);
+    console.error('Erro no script seed:', err);
   } finally {
     await sequelize.close();
-    process.exit(0);
   }
 })();

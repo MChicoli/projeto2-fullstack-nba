@@ -13,3 +13,19 @@
 2025-06-29T23:27:32.424Z - ACESSO NEGADO (Token Inválido) - IP: ::1
 2025-06-29T23:27:55.346Z - UserID: 1 acessou GET /search?q=curry
 2025-06-29T23:28:01.158Z - UserID: 1 acessou GET /search?q=james
+2025-06-30T00:45:47.313Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com do IP: ::1
+2025-06-30T00:46:31.472Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com do IP: ::1
+2025-06-30T00:48:27.870Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com do IP: ::1
+2025-06-30T00:50:49.049Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com do IP: ::1
+2025-06-30T00:53:06.988Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com do IP: ::1
+2025-06-30T00:53:29.191Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com do IP: ::1
+2025-06-30T00:54:04.029Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com do IP: ::1
+2025-06-30T00:58:27.234Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com do IP: ::1
+2025-06-30T00:58:58.776Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com do IP: ::1
+2025-06-30T01:05:17.142Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com
+2025-06-30T01:10:40.670Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com
+2025-06-30T01:11:01.905Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com
+2025-06-30T01:14:53.639Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com
+2025-06-30T01:15:09.170Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com
+2025-06-30T01:15:32.157Z - FALHA DE LOGIN - Tentativa para o email: nbaadmin@meuprojeto.com
+2025-06-30T01:18:47.966Z - UserID: 3 acessou GET /search?q=james
